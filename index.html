@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shivam Jog — Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0d1520; --bg-2:#111c29; --surface:#16222f; --surface-2:#1b2937;
+    --line:#26384a; --line-soft:#1f2f3f;
+    --ink:#e8eef4; --muted:#93a4b6; --faint:#5f7185;
+    --amber:#f2a007; --amber-soft:rgba(242,160,7,.13); --amber-line:rgba(242,160,7,.34);
+    --cyan:#49c9c9; --cyan-soft:rgba(73,201,201,.12); --cyan-line:rgba(73,201,201,.32);
+    --display:"Bricolage Grotesque",sans-serif;
+    --body:"Inter",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--body);
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(1100px 620px at 78% -8%, rgba(73,201,201,.06), transparent 60%),
+      radial-gradient(900px 520px at 8% 4%, rgba(242,160,7,.05), transparent 55%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:var(--mono)}
+  .eyebrow{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--faint);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:64px 0 30px;border-bottom:1px solid var(--line-soft)}
+  .hero-grid{display:grid;grid-template-columns:1fr 260px;gap:36px;align-items:center}
+  .hero-tag{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);
+    box-shadow:0 0 0 3px var(--cyan-soft);flex:none}
+  .name{
+    font-family:var(--display); font-weight:800; letter-spacing:-.02em; line-height:.95;
+    font-size:clamp(46px,8.5vw,88px); margin:0 0 20px;
+  }
+  .name .amp{color:var(--amber)}
+  .thesis{
+    font-size:clamp(17px,2.3vw,21px); color:var(--ink); max-width:32ch;
+    font-weight:450; margin-bottom:26px;
+  }
+  .thesis b{font-weight:600}
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .pill{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--muted);
+    padding:6px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  }
+  .contact{display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:12.5px}
+  .contact a,.contact span{color:var(--muted);text-decoration:none}
+  .contact a:hover{color:var(--cyan)}
+  .contact .sep{color:var(--faint)}
+
+  /* radar */
+  .radar-box{display:flex;justify-content:center}
+  .radar-shell{
+    position:relative;width:230px;height:230px;border-radius:50%;
+    border:1px solid var(--line);background:
+      radial-gradient(circle at 50% 50%, rgba(73,201,201,.07), transparent 62%),
+      var(--bg-2);
+    box-shadow:inset 0 0 40px rgba(0,0,0,.5);
+  }
+  #radar{position:absolute;inset:0;width:100%;height:100%}
+  .radar-label{
+    position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);
+    text-transform:uppercase;white-space:nowrap;
+  }
+
+  /* ---------- METRICS ---------- */
+  .metrics{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .metric{padding:26px 24px;border-right:1px solid var(--line-soft)}
+  .metric:last-child{border-right:none}
+  .metric .num{font-family:var(--display);font-weight:700;font-size:34px;letter-spacing:-.02em;color:var(--amber);line-height:1}
+  .metric .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);margin-top:9px;text-transform:uppercase}
+
+  /* ---------- TABS ---------- */
+  main{padding:44px 0 90px}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .tab{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);background:none;border:none;cursor:pointer;
+    padding:13px 16px;position:relative;transition:color .18s;
+  }
+  .tab .idx{color:var(--faint);margin-right:8px}
+  .tab:hover{color:var(--ink)}
+  .tab[aria-selected="true"]{color:var(--ink)}
+  .tab[aria-selected="true"]::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--amber);
+  }
+  .tab:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:3px}
+
+  .panel{display:none;animation:fade .34s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+  .lede{font-size:16.5px;color:var(--muted);max-width:66ch;margin-bottom:18px}
+  .lede b{color:var(--ink);font-weight:600}
+  .lede+.lede{margin-top:0}
+
+  .edu-strip{
+    margin-top:30px;padding-top:22px;border-top:1px solid var(--line-soft);
+    display:grid;gap:14px;
+  }
+  .edu{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .edu .t{color:var(--ink);font-weight:500}
+  .edu .s{color:var(--faint);font-family:var(--mono);font-size:12px;white-space:nowrap}
+  .edu .d{color:var(--muted);font-size:13.5px;width:100%}
+
+  /* ---------- TIMELINE ---------- */
+  .tl{position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .job{position:relative;padding-bottom:34px}
+  .job:last-child{padding-bottom:0}
+  .job::before{
+    content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--amber);
+  }
+  .job.past::before{border-color:var(--cyan)}
+  .job-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+  .job-role{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:-.01em}
+  .job-dates{font-family:var(--mono);font-size:12px;color:var(--faint);white-space:nowrap}
+  .job-meta{font-family:var(--mono);font-size:12.5px;color:var(--cyan);margin:5px 0 12px;letter-spacing:.02em}
+  .job ul{list-style:none;display:grid;gap:8px}
+  .job li{position:relative;padding-left:18px;color:var(--muted);font-size:14.5px}
+  .job li::before{content:"›";position:absolute;left:0;color:var(--amber);font-family:var(--mono)}
+  .job li b{color:var(--ink);font-weight:600}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-list{display:grid;gap:12px}
+  .proj{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;transition:border-color .2s}
+  .proj:hover{border-color:var(--amber-line)}
+  .proj.open{border-color:var(--amber-line)}
+  .proj-btn{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;color:inherit;
+    padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;
+  }
+  .proj-btn:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+  .proj-title{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+  .proj-sum{grid-column:1/2;color:var(--muted);font-size:14px}
+  .proj-tags{grid-column:1/2;display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .tagm{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--cyan);
+    background:var(--cyan-soft);border:1px solid var(--cyan-line);padding:3px 8px;border-radius:5px}
+  .chev{grid-row:1/2;grid-column:2;color:var(--amber);font-family:var(--mono);font-size:20px;
+    transition:transform .25s;line-height:1;align-self:start;margin-top:2px}
+  .proj.open .chev{transform:rotate(45deg)}
+  .proj-body{max-height:0;overflow:hidden;transition:max-height .32s ease}
+  .proj-body-inner{padding:0 20px 20px;color:var(--muted);font-size:14.5px;line-height:1.6;border-top:1px solid var(--line-soft);margin-top:2px;padding-top:16px}
+  .proj-body-inner b{color:var(--ink);font-weight:600}
+
+  /* ---------- STACK ---------- */
+  .stack{display:grid;gap:22px}
+  .cat-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .cat-head .k{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.15em}
+  .cat-head .n{font-family:var(--display);font-weight:600;font-size:16px}
+  .cat-head .rule{flex:1;height:1px;background:var(--line-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--mono);font-size:12px;color:var(--muted);padding:6px 11px;
+    border:1px solid var(--line);border-radius:7px;background:var(--surface);transition:.16s}
+  .chip:hover{color:var(--ink);border-color:var(--amber-line);background:var(--surface-2)}
+  .chip.key{color:var(--amber);border-color:var(--amber-line);background:var(--amber-soft)}
+
+  footer{border-top:1px solid var(--line-soft);padding:22px 0;
+    font-family:var(--mono);font-size:11.5px;color:var(--faint);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .radar-box{order:-1}
+    .radar-shell{width:180px;height:180px}
+    .metrics{grid-template-columns:1fr 1fr}
+    .metric:nth-child(2){border-right:none}
+    .metric{border-bottom:1px solid var(--line-soft)}
+    .metric:nth-child(3),.metric:nth-child(4){border-bottom:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .proj-body{transition:none}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="eyebrow">Senior Software Engineer &nbsp;·&nbsp; Pune, India</span>
+          </div>
+          <h1 class="name">Shivam Jog</h1>
+          <p class="thesis">I build high-performance, real-time <b>C++</b> systems — from air-surveillance radar to in-machine display software.</p>
+          <div class="pill-row">
+            <span class="pill">C++ 11 / 14 / 17</span>
+            <span class="pill">Real-time &amp; Multithreaded</span>
+            <span class="pill">Event-Driven Systems</span>
+            <span class="pill">AI-Assisted Dev</span>
+          </div>
+          <div class="contact">
+            <a href="mailto:shivam_jog@outlook.com">shivam_jog@outlook.com</a>
+            <span class="sep">/</span>
+            <a href="tel:+917387918966">+91 73879 18966</a>
+            <span class="sep">/</span>
+            <a href="https://linkedin.com/in/shivam-jog" target="_blank" rel="noopener">linkedin.com/in/shivam-jog</a>
+          </div>
+        </div>
+        <div class="radar-box">
+          <div class="radar-shell">
+            <canvas id="radar" width="460" height="460" aria-hidden="true"></canvas>
+            <span class="radar-label">Systems · Online</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- METRICS -->
+    <section class="metrics" aria-label="At a glance">
+      <div class="metric"><div class="num">5</div><div class="lbl">Years, production C++</div></div>
+      <div class="metric"><div class="num">2</div><div class="lbl">Domains — radar &amp; heavy machinery</div></div>
+      <div class="metric"><div class="num">C++17</div><div class="lbl">Modern standard, daily</div></div>
+      <div class="metric"><div class="num">1</div><div class="lbl">LLM agent, in production</div></div>
+    </section>
+
+    <!-- TABS -->
+    <main>
+      <div class="tabs" role="tablist" aria-label="Sections">
+        <button class="tab" role="tab" aria-selected="true"  id="t-about"    aria-controls="p-about"    data-p="about"><span class="idx">01</span>About</button>
+        <button class="tab" role="tab" aria-selected="false" id="t-exp"      aria-controls="p-exp"      data-p="exp"><span class="idx">02</span>Experience</button>
+        <button class="tab" role="tab" aria-selected="false" id="t-proj"     aria-controls="p-proj"     data-p="proj"><span class="idx">03</span>Projects</button>
+        <button class="tab" role="tab" aria-selected="false" id="t-stack"    aria-controls="p-stack"    data-p="stack"><span class="idx">04</span>Stack</button>
+      </div>
+
+      <!-- ABOUT -->
+      <section class="panel active" id="p-about" role="tabpanel" aria-labelledby="t-about" tabindex="0">
+        <p class="lede">I'm a Senior Software Engineer who builds the systems people depend on but never see — <b>real-time C++</b> that has to be correct, fast, and stay that way under load.</p>
+        <p class="lede">Over five years I've shipped production C++ in two demanding domains: mission-critical <b>3D air-surveillance radar</b> at Tata Advanced Systems, and operator-facing <b>in-machine display software</b> for Caterpillar at Agiliad. The through-line is concurrency, performance, and clean architecture — multithreaded designs, event-driven messaging, and code that survives review and test automation.</p>
+        <p class="lede">I was also an early, hands-on adopter of AI-assisted development: I built a <b>production LLM agent</b> that generates UI definition files from a tag-schema spec, grounded on existing files — cutting repetitive manual authoring without giving up correctness. Alongside work, I'm pursuing an AI/ML Master's through IIIT Bangalore &amp; LJMU.</p>
+
+        <div class="edu-strip">
+          <div class="edu">
+            <span class="t">AI / Machine Learning Master's Programme</span>
+            <span class="s">2025 – Exp. Mar 2027</span>
+            <span class="d">IIIT Bangalore &amp; Liverpool John Moores University</span>
+          </div>
+          <div class="edu">
+            <span class="t">B.E., Computer Science &amp; Engineering</span>
+            <span class="s">2017 – 2021</span>
+            <span class="d">G.H. Raisoni Institute of Engineering &amp; Technology</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="panel" id="p-exp" role="tabpanel" aria-labelledby="t-exp" tabindex="0">
+        <div class="tl">
+          <div class="job">
+            <div class="job-head">
+              <span class="job-role">Senior Software Engineer — Agiliad Technologies</span>
+              <span class="job-dates">Mar 2025 – Present</span>
+            </div>
+            <div class="job-meta">Client: Caterpillar Inc. · Project: Display Core · Pune</div>
+            <ul>
+              <li>Develop and maintain <b>modern C++ (14/17)</b> backend systems for the Display Core platform, using <b>event-driven design</b> (observer, publisher/subscriber) for decoupled, maintainable modules.</li>
+              <li>Build responsive <b>JavaScript UI features backed by C++ services</b> across the UI/backend boundary.</li>
+              <li>Built a production <b>LLM code-generation agent</b> (Copilot Agent + Python-orchestrated Claude plugins) that generates UI definition files from a tag-schema spec, grounded on existing files.</li>
+              <li>Authored <b>BDD (Gherkin)</b> and unit/integration tests (GoogleTest/GoogleMock); built and maintained <b>GitLab CI/CD</b> pipelines.</li>
+            </ul>
+          </div>
+          <div class="job past">
+            <div class="job-head">
+              <span class="job-role">Software Engineer — Tata Advanced Systems Ltd.</span>
+              <span class="job-dates">Aug 2021 – Mar 2025</span>
+            </div>
+            <div class="job-meta">Radar Department · 3D Air Surveillance Radar · India</div>
+            <ul>
+              <li>Designed and implemented <b>real-time, multithreaded C++ applications on Linux</b> for a mission-critical defence system.</li>
+              <li>Developed the <b>Health Monitor</b> (Protocol Buffers) and <b>socket-based IPC / publish-subscribe</b> messaging for high-throughput inter-application data exchange.</li>
+              <li>Built <b>Track Data Manager</b>, a SQL-backed C++ application with a dedicated database thread inside a multithreaded design.</li>
+              <li>Co-built the <b>MTT Benchmark</b> — a Python tool validating the C++ correlation library against its accuracy tolerance; still in production use.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="panel" id="p-proj" role="tabpanel" aria-labelledby="t-proj" tabindex="0">
+        <div class="proj-list" id="projList">
+          <!-- 1 -->
+          <div class="proj">
+            <button class="proj-btn" aria-expanded="false">
+              <span class="proj-title">Track Data Manager</span>
+              <span class="chev" aria-hidden="true">+</span>
+              <span class="proj-sum">SQL-backed C++ service turning live radar correlation data into displayable form.</span>
+              <span class="proj-tags"><span class="tagm">C++</span><span class="tagm">SQL</span><span class="tagm">Multithreading</span></span>
+            </button>
+            <div class="proj-body"><div class="proj-body-inner">
+              Designed the relational schema and a <b>hashmap-keyed structure for O(1) track lookup</b>, and isolated all database access to a <b>dedicated thread</b> within a multithreaded design — keeping the hot path responsive while the DB thread carried the heavy work.
+            </div></div>
+          </div>
+          <!-- 2 -->
+          <div class="proj">
+            <button class="proj-btn" aria-expanded="false">
+              <span class="proj-title">LLM Code-Generation Agent</span>
+              <span class="chev" aria-hidden="true">+</span>
+              <span class="proj-sum">A production agent that generates UI definition files from a tag-schema spec.</span>
+              <span class="proj-tags"><span class="tagm">Copilot</span><span class="tagm">Claude</span><span class="tagm">Python</span></span>
+            </button>
+            <div class="proj-body"><div class="proj-body-inner">
+              Built on a Copilot Agent with <b>Python-orchestrated Claude plugins</b>. It generates UI definition files from a tag-schema specification, <b>grounded on existing UI files</b> so output matches real conventions — removing repetitive, error-prone manual authoring and lifting both productivity and consistency.
+            </div></div>
+          </div>
+          <!-- 3 -->
+          <div class="proj">
+            <button class="proj-btn" aria-expanded="false">
+              <span class="proj-title">Health Monitor &amp; IPC Messaging</span>
+              <span class="chev" aria-hidden="true">+</span>
+              <span class="proj-sum">Real-time health monitoring and inter-application messaging for the radar system.</span>
+              <span class="proj-tags"><span class="tagm">C++</span><span class="tagm">Protocol Buffers</span><span class="tagm">Sockets</span></span>
+            </button>
+            <div class="proj-body"><div class="proj-body-inner">
+              Developed the Health Monitor using <b>Protocol Buffers</b> and built <b>socket-based IPC</b> with a publish/subscribe model for high-throughput data exchange between applications on real-time Linux.
+            </div></div>
+          </div>
+          <!-- 4 -->
+          <div class="proj">
+            <button class="proj-btn" aria-expanded="false">
+              <span class="proj-title">MTT Benchmark Tool</span>
+              <span class="chev" aria-hidden="true">+</span>
+              <span class="proj-sum">Analytical tool validating the C++ correlation library against its accuracy tolerance.</span>
+              <span class="proj-tags"><span class="tagm">Python</span><span class="tagm">NumPy</span><span class="tagm">scikit-learn</span></span>
+            </button>
+            <div class="proj-body"><div class="proj-body-inner">
+              Turned subjective inspection into an <b>objective pass/fail check</b> using NumPy typed arrays, scikit-learn regression/residual analysis, and Matplotlib dashboards. Co-designed by a two-engineer team, delivered in roughly three months, and <b>still in production use</b> as a departmental validation tool.
+            </div></div>
+          </div>
+          <!-- 5 -->
+          <div class="proj">
+            <button class="proj-btn" aria-expanded="false">
+              <span class="proj-title">SBOMBuilder Pipeline</span>
+              <span class="chev" aria-hidden="true">+</span>
+              <span class="proj-sum">Dependency data layer for an automated SBOM-generation pipeline.</span>
+              <span class="proj-tags"><span class="tagm">Python</span><span class="tagm">CycloneDX</span><span class="tagm">GitLab CI/CD</span></span>
+            </button>
+            <div class="proj-body"><div class="proj-body-inner">
+              Owned the <b>dependency data layer</b> and parts of JSON serialization in a multi-stage CycloneDX SBOM generator integrated into <b>GitLab CI/CD</b> (pipeline orchestration led by a Principal Engineer).
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STACK -->
+      <section class="panel" id="p-stack" role="tabpanel" aria-labelledby="t-stack" tabindex="0">
+        <div class="stack">
+          <div>
+            <div class="cat-head"><span class="k">A</span><span class="n">Core C++</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip key">STL</span><span class="chip key">Templates &amp; Generic Programming</span>
+              <span class="chip key">RAII &amp; Smart Pointers</span><span class="chip key">Move Semantics</span>
+              <span class="chip key">Multithreading &amp; Concurrency</span><span class="chip">OOD</span>
+              <span class="chip">Design Patterns</span><span class="chip">Data Structures &amp; Algorithms</span>
+            </div>
+          </div>
+          <div>
+            <div class="cat-head"><span class="k">B</span><span class="n">Architecture</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip">Event-Driven (Observer, Pub/Sub)</span><span class="chip">IPC</span>
+              <span class="chip">Socket Programming</span><span class="chip">Protocol Buffers</span>
+              <span class="chip">Memory &amp; Performance Optimisation</span>
+            </div>
+          </div>
+          <div>
+            <div class="cat-head"><span class="k">C</span><span class="n">Languages</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip key">C++ (11/14/17)</span><span class="chip">C</span>
+              <span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">SQL</span>
+            </div>
+          </div>
+          <div>
+            <div class="cat-head"><span class="k">D</span><span class="n">AI-Assisted Development</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip">LLM agent development</span><span class="chip">Schema-grounded code generation</span>
+              <span class="chip">Prompt engineering</span><span class="chip">Cursor</span>
+              <span class="chip">Claude Code</span><span class="chip">GitHub Copilot</span>
+            </div>
+          </div>
+          <div>
+            <div class="cat-head"><span class="k">E</span><span class="n">Testing &amp; Quality</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip">GoogleTest / GoogleMock</span><span class="chip">BDD (Gherkin)</span>
+              <span class="chip">GDB / Valgrind</span><span class="chip">LDRA</span>
+            </div>
+          </div>
+          <div>
+            <div class="cat-head"><span class="k">F</span><span class="n">Tooling &amp; Systems</span><span class="rule"></span></div>
+            <div class="chips">
+              <span class="chip">GitLab CI/CD</span><span class="chip">Git</span><span class="chip">JIRA</span>
+              <span class="chip">Agile / Scrum</span><span class="chip">Qt</span>
+              <span class="chip">Real-time Linux</span><span class="chip">RTOS</span><span class="chip">TCP/UDP/IP</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>SHIVAM JOG · SENIOR SOFTWARE ENGINEER</span>
+      <span>C++ · REAL-TIME SYSTEMS · AI-ASSISTED DEV</span>
+    </footer>
+  </div>
+
+<script>
+  /* ---- tabs ---- */
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  const panels = {about:'p-about',exp:'p-exp',proj:'p-proj',stack:'p-stack'};
+  function select(tab){
+    tabs.forEach(t=>t.setAttribute('aria-selected', t===tab));
+    Object.values(panels).forEach(id=>document.getElementById(id).classList.remove('active'));
+    document.getElementById(panels[tab.dataset.p]).classList.add('active');
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        e.preventDefault();
+        const n=(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length;
+        tabs[n].focus(); select(tabs[n]);
+      }
+    });
+  });
+
+  /* ---- project accordion ---- */
+  document.querySelectorAll('.proj-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const proj=btn.closest('.proj');
+      const body=proj.querySelector('.proj-body');
+      const open=proj.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+      body.style.maxHeight = open ? body.scrollHeight+'px' : '0';
+    });
+  });
+
+  /* ---- radar sweep ---- */
+  (function(){
+    const c=document.getElementById('radar'); if(!c) return;
+    const ctx=c.getContext('2d');
+    const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const S=c.width, cx=S/2, cy=S/2, R=S/2-14;
+    const blips=[{a:0.7,r:0.55},{a:2.3,r:0.78},{a:4.1,r:0.34},{a:5.4,r:0.66}];
+
+    function rings(){
+      ctx.strokeStyle='rgba(73,201,201,.18)'; ctx.lineWidth=1;
+      for(let i=1;i<=3;i++){ctx.beginPath();ctx.arc(cx,cy,R*i/3,0,Math.PI*2);ctx.stroke();}
+      ctx.beginPath();ctx.moveTo(cx-R,cy);ctx.lineTo(cx+R,cy);
+      ctx.moveTo(cx,cy-R);ctx.lineTo(cx,cy+R);ctx.stroke();
+    }
+    function drawBlips(sweep){
+      blips.forEach(b=>{
+        const x=cx+Math.cos(b.a)*R*b.r, y=cy+Math.sin(b.a)*R*b.r;
+        let d=(sweep-b.a); d=((d%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
+        const glow=reduce?0.5:Math.max(0,1-d/1.2);
+        ctx.beginPath();ctx.arc(x,y,2.6,0,Math.PI*2);
+        ctx.fillStyle='rgba(242,160,7,'+(0.35+0.65*glow)+')';ctx.fill();
+      });
+    }
+    function frame(t){
+      ctx.clearRect(0,0,S,S); rings();
+      const sweep=reduce?-0.6:(t/1000)%(Math.PI*2);
+      if(!reduce){
+        const g=ctx.createConicGradient? null:null;
+        ctx.save();ctx.translate(cx,cy);ctx.rotate(sweep);
+        const grad=ctx.createLinearGradient(0,0,R,0);
+        grad.addColorStop(0,'rgba(242,160,7,.45)');grad.addColorStop(1,'rgba(242,160,7,0)');
+        ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,-0.34,0);ctx.closePath();
+        ctx.fillStyle=grad;ctx.fill();
+        ctx.strokeStyle='rgba(242,160,7,.7)';ctx.lineWidth=1.2;
+        ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(R,0);ctx.stroke();
+        ctx.restore();
+      }
+      drawBlips(sweep);
+      ctx.beginPath();ctx.arc(cx,cy,3,0,Math.PI*2);ctx.fillStyle='rgba(73,201,201,.9)';ctx.fill();
+      if(!reduce) requestAnimationFrame(frame);
+    }
+    if(reduce) frame(0); else requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
